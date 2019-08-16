@@ -1,6 +1,7 @@
 package edu.tallerjava.servicios;
 
 import edu.tallerjava.modelo.Category;
+import edu.tallerjava.repositorios.CategoryMELIRepository;
 import edu.tallerjava.repositorios.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,21 +13,25 @@ import java.util.Optional;
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
-    private CategoryRepository repo;
+    private CategoryMELIRepository repo;
 
     @Override
     public List<Category> findAll() {
-        return repo.findAll();
+        return repo.findAllRest();
     }
 
+    /*
     @Override
     public Category save(Category category) {
         return repo.save(category);
     }
+     */
 
     @Override
-    public Optional<Category> findById(Long id) {
-        return repo.findById(id);
+    public Category findById(Long id) {
+        return repo.findByIdRest(id);
     }
+
+
 
 }
