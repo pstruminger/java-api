@@ -1,5 +1,6 @@
 package edu.tallerjava.aceptacion;
 
+import edu.tallerjava.controladores.CategoriesController;
 import edu.tallerjava.modelo.Category;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
@@ -28,7 +29,7 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     @Test
     @Sql(value = "/sql/createCategories.sql")
     public void getSingleCategory(){
-        final List<Category> categories = getForObject(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
+        final List<Category> categories = getForObject(url + "/categories", new ParameterizedTypeReference<>() {});
         String uri = url + "/categories/" + categories.get(0).getId();
 
         final ResponseEntity<Category> responseEntity = restTemplate.getForEntity(uri, Category.class);
